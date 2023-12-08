@@ -1,3 +1,6 @@
+import { readFileSync } from "fs";
+import path from "path";
+
 const testCases: [string, number][] = [
   [
     `two1nine
@@ -104,9 +107,6 @@ testCases.forEach((testCase, i) => {
     throw new Error(`FAILED. Expect ${testCase[1]}, received ${result}`);
   }
 });
-
-import { readFileSync } from "fs";
-import path from "path";
 
 const INPUT = readFileSync(path.join(__dirname, "./input.txt"), {
   encoding: "utf-8",
