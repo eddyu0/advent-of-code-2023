@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "ts-node"
+    "start": "ts-node",
+    "new": "cp -r template day${npm_config_date}"
   },
   "author": "",
   "license": "ISC",
