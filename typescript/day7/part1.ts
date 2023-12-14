@@ -66,7 +66,7 @@ function sortHands(hand1: [string, number], hand2: [string, number]): number {
   return 0;
 }
 
-function readHand(line: string): [string, number] {
+export function readHand(line: string): [string, number] {
   const [hand, bid] = line.split(" ");
 
   return [hand, parseInt(bid)];
