@@ -10,7 +10,7 @@ function predict(sequence: number[]): number {
   return sequence[sequence.length - 1] + predict(getDiffSequence(sequence));
 }
 
-function getDiffSequence(sequence: number[]): number[] {
+export function getDiffSequence(sequence: number[]): number[] {
   let diffSequence = [];
   let previousValue = sequence[0];
   for (const value of sequence.slice(1)) {
