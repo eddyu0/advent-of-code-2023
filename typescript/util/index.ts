@@ -15,3 +15,7 @@ export function zip<A, B, C>(arrA: A[], arrB: B[], mapFn?: (a: A, b: B) => C) {
       : arrB.map((b, i) => [arrA[i], b] as [A, B]);
   }
 }
+
+export function sum(arr: number[]): number {
+  return arr.reduce((sum, current) => sum + current, 0);
+}
