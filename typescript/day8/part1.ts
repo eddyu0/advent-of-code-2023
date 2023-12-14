@@ -1,13 +1,13 @@
 import { readFileSync } from "fs";
 import path from "path";
 
-type Node = {
+export type Node = {
   id: string;
   left: string;
   right: string;
 };
 
-function readNode(line: string): Node {
+export function readNode(line: string): Node {
   const [id, navigationStr] = line.split(" = ");
   const [left, right] = navigationStr
     .slice(1, navigationStr.length - 1)
@@ -16,7 +16,7 @@ function readNode(line: string): Node {
   return { id, left, right };
 }
 
-function walk(node: Node, instruction: string): string {
+export function walk(node: Node, instruction: string): string {
   if (instruction === "L") {
     return node.left;
   } else {
