@@ -19,7 +19,7 @@ const Connections = {
   west: ["-", "L", "F", "S"],
 };
 
-function isSame(pos1: Position, pos2: Position): boolean {
+export function isSame(pos1: Position, pos2: Position): boolean {
   return pos1.y === pos2.y && pos1.x === pos2.x;
 }
 
@@ -38,7 +38,7 @@ function flipDirection(direction: Direction): Direction {
   }
 }
 
-function findStart(lines: string[]): Position {
+export function findStart(lines: string[]): Position {
   for (let y = 0; y < lines.length; y++) {
     for (let x = 0; x < lines[0].length; x++) {
       if (lines[y][x] === "S") {
@@ -49,7 +49,7 @@ function findStart(lines: string[]): Position {
   throw new Error("Starting point not found");
 }
 
-function getNextPos(pos: Position, direction: Direction): Position {
+export function getNextPos(pos: Position, direction: Direction): Position {
   switch (direction) {
     case "north":
       return { y: pos.y - 1, x: pos.x };
@@ -64,11 +64,11 @@ function getNextPos(pos: Position, direction: Direction): Position {
   }
 }
 
-function getPipe(pos: Position, lines: string[]): string {
+export function getPipe(pos: Position, lines: string[]): string {
   return lines[pos.y][pos.x];
 }
 
-function isOutOfBound(pos: Position, lines: string[]): boolean {
+export function isOutOfBound(pos: Position, lines: string[]): boolean {
   return !(
     pos.x >= 0 &&
     pos.x < lines[0].length &&
@@ -77,7 +77,7 @@ function isOutOfBound(pos: Position, lines: string[]): boolean {
   );
 }
 
-function next(from: Position, pos: Position, lines: string[]): Position {
+export function next(from: Position, pos: Position, lines: string[]): Position {
   const pipe = getPipe(pos, lines);
   for (const direction of Object.values(Direction)) {
     const nextPos = getNextPos(pos, direction);
