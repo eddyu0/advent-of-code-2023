@@ -47,7 +47,7 @@ function pairDistance(galaxy1: Position, galaxy2: Position): number {
   return Math.abs(galaxy2.x - galaxy1.x) + Math.abs(galaxy2.y - galaxy1.y);
 }
 
-function findPairs(universe: string[]): [Position, Position][] {
+export function findPairs(universe: string[]): [Position, Position][] {
   const galaxies: Position[] = [];
   const pairs: [Position, Position][] = [];
   for (let y = 0; y < universe.length; y++) {
