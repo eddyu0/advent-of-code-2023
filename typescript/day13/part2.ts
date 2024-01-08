@@ -1,9 +1,81 @@
 import { readFileSync } from "fs";
 import path from "path";
 
+function rowEditDistance(row1: string, row2: string): number {
+  let distance = 0;
+  for (let i = 0; i < row1.length; i++) {
+    if (row1[i] !== row2[i]) {
+      distance++;
+    }
+  }
+  return distance;
+}
+
+function colEditDistance(
+  col1: number,
+  col2: number,
+  pattern: string[]
+): number {
+  let distance = 0;
+  for (let row = 0; row < pattern.length; row++) {
+    if (pattern[row][col1] !== pattern[row][col2]) {
+      distance++;
+    }
+  }
+  return distance;
+}
+
+function isVerticalReflected(
+  row1: number,
+  row2: number,
+  pattern: string[]
+): boolean {
+  let totalEditDistance = 0;
+  while (row1 >= 0 && row2 < pattern.length && totalEditDistance <= 1) {
+    totalEditDistance += rowEditDistance(pattern[row1], pattern[row2]);
+    row1--;
+    row2++;
+  }
+  return totalEditDistance === 1;
+}
+
+function isHorizontalReflected(
+  col1: number,
+  col2: number,
+  pattern: string[]
+): boolean {
+  let totalEditDistance = 0;
+  while (col1 >= 0 && col2 < pattern[0].length && totalEditDistance <= 1) {
+    totalEditDistance += colEditDistance(col1, col2, pattern);
+    col1--;
+    col2++;
+  }
+  return totalEditDistance === 1;
+}
+
 export function solve(input: string): number {
-  const lines = input.split("\n");
-  const result = 0;
+  const patterns = input.split("\n\n").map((pattern) => pattern.split("\n"));
+
+  let result = 0;
+
+  for (const pattern of patterns) {
+    let patternSolved = false;
+    for (let row1 = 0; row1 < pattern.length - 1 && !patternSolved; row1++) {
+      const row2 = row1 + 1;
+      if (isVerticalReflected(row1, row2, pattern)) {
+        result += (row1 + 1) * 100;
+        patternSolved = true;
+      }
+    }
+
+    for (let col1 = 0; col1 < pattern[0].length; col1++) {
+      const col2 = col1 + 1;
+      if (isHorizontalReflected(col1, col2, pattern)) {
+        result += col1 + 1;
+        patternSolved = true;
+      }
+    }
+  }
 
   return result;
 }
