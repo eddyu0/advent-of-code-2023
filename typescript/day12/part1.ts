@@ -2,7 +2,7 @@ import { readFileSync } from "fs";
 import path from "path";
 import { sum } from "../util";
 
-function enumerate(
+export function enumerate(
   springs: string,
   damages: number[],
   seenHash: boolean
