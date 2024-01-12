@@ -2,7 +2,7 @@ import { readFileSync } from "fs";
 import path from "path";
 import { sum } from "../util";
 
-function hash(input: string): number {
+export function hash(input: string): number {
   let result = 0;
 
   for (let i = 0; i < input.length; i++) {

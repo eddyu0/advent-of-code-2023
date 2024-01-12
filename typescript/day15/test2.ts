@@ -1,7 +1,9 @@
 import { runTest } from "../test-runner";
 import { solve } from "./part2";
 
-const testCases: [[string], number][] = [[[``], -1]];
+const testCases: [[string], number][] = [
+  [[`rn=1,cm-,qp=3,cm=2,qp-,pc=4,ot=9,ab=5,pc-,pc=6,ot=7`], 145],
+];
 
 function main() {
   runTest(solve, testCases);
