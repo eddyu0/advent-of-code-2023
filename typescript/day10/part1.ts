@@ -68,7 +68,10 @@ export function getPipe(pos: Position, lines: string[]): string {
   return lines[pos.y][pos.x];
 }
 
-export function isOutOfBound(pos: Position, lines: string[]): boolean {
+export function isOutOfBound(
+  pos: Position,
+  lines: string[] | string[][]
+): boolean {
   return !(
     pos.x >= 0 &&
     pos.x < lines[0].length &&
